@@ -1,7 +1,18 @@
 import './styles/App.css';
+import { Header } from './components/Header';
+import { ResultsContainer } from './components/ResultsContainer';
+import { Map } from './components/Map';
+import { useState } from 'react';
 
 function App() {
-  return <h1>hello world</h1>;
+  const [IP, setIP] = useState('');
+  return (
+    <>
+      <Header></Header>
+      <ResultsContainer></ResultsContainer>
+      <Map></Map>
+    </>
+  );
 }
 
 export default App;
