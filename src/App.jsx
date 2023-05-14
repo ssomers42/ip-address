@@ -5,12 +5,13 @@ import { Map } from './components/Map';
 import { useState } from 'react';
 
 function App() {
-  const [IP, setIP] = useState('');
+  const [ipAddress, setIpAddress] = useState('');
+
   return (
     <>
-      <Header></Header>
-      <ResultsContainer></ResultsContainer>
-      <Map></Map>
+      <Header setIpAddress={setIpAddress}></Header>
+      <ResultsContainer ipAddress={ipAddress}></ResultsContainer>
+      <Map ipAddress={ipAddress}></Map>
     </>
   );
 }
