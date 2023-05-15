@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 function App() {
   const [ipAddress, setIpAddress] = useState('');
+  const [location, setLocation] = useState('');
 
   return (
     <>
