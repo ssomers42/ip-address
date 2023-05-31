@@ -5,13 +5,21 @@ import { Map } from './components/Map';
 import { useState } from 'react';
 
 function App() {
-  const [ipAddress, setIpAddress] = useState('');
+  const [ipAddress, setIpAddress] = useState(null);
+  const [ipInfo, setIpInfo] = useState(null);
+
+  const onIpChange = (ipInfo) => {
+    setIpAddress((existingIp) => existingIp ?? ipInfo.ip);
+    setIpInfo(ipInfo);
+  };
 
   return (
     <>
       <Header handleIpChange={(ip) => setIpAddress(ip)}></Header>
-      <ResultsContainer ipAddress={ipAddress}></ResultsContainer>
-      <Map ipAddress={ipAddress}></Map>
+      <ResultsContainer
+        ipAddress={ipAddress}
+        ipInfo={ipInfo}></ResultsContainer>
+      <Map ipAddress={ipAddress} onIpChange={onIpChange}></Map>
     </>
   );
 }

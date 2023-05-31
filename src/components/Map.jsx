@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useMap } from 'react-leaflet/hooks';
 
-export const Map = ({ ipAddress }) => {
+export const Map = ({ ipAddress, onIpChange }) => {
   const [lat, setLat] = useState(32.7679);
   const [long, setLong] = useState(-117.1235);
 
   //Updates MapContainer when ipAddress is updated
-  const FlyMapOnUpdate = ({ center, zoom }) => {
+  const FlyMapOnIpUpdate = ({ center, zoom }) => {
     const map = useMap();
 
     useEffect(() => {
@@ -19,21 +19,26 @@ export const Map = ({ ipAddress }) => {
       const getLocation = async () => {
         console.log('location run');
         const apiKey = 'at_FcUoYu5h9NCfBwMyuelMKPInX8nwo';
-        const geoAPI = `https:geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${ipAddress}`;
+        const geoAPI = ipAddress
+          ? `https:geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${ipAddress}`
+          : `https:geo.ipify.org/api/v2/country,city?apiKey=${apiKey}`;
 
         const locationResponse = await fetch(geoAPI);
         const locationData = await locationResponse.json();
 
-        //Have to set state inside of getLocation since it is wrapped in a useEffect
+        //Set state inside of getLocation since it is wrapped in a useEffect
         if (!ignore) {
           setLat(locationData.location.lat);
           setLong(locationData.location.lng);
 
           //MapContainer props are immutable. Use useMap hook to flyTo when the ipAddress changes
           map.flyTo(center, zoom);
+
+          onIpChange(locationData);
         }
       };
-      ipAddress && getLocation();
+      //Running on mount w/o set IP will default to client's IP
+      getLocation();
 
       //reset variable
       return () => {
@@ -55,8 +60,9 @@ export const Map = ({ ipAddress }) => {
           }
           url={`https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png`}
         />
+        <Marker position={[lat, long]} />
         <div id="map"></div>
-        <FlyMapOnUpdate center={[lat, long]} zoom={15} />
+        <FlyMapOnIpUpdate center={[lat, long]} zoom={15} />
       </MapContainer>
     </div>
   );
