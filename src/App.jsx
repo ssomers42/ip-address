@@ -6,11 +6,10 @@ import { useState } from 'react';
 
 function App() {
   const [ipAddress, setIpAddress] = useState('');
-  const [location, setLocation] = useState('');
 
   return (
     <>
-      <Header setIpAddress={setIpAddress}></Header>
+      <Header handleIpChange={(ip) => setIpAddress(ip)}></Header>
       <ResultsContainer ipAddress={ipAddress}></ResultsContainer>
       <Map ipAddress={ipAddress}></Map>
     </>

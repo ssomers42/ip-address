@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 
-export const Header = ({ setIpAddress }) => {
+export const Header = ({ handleIpChange }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIpAddress(inputRef.current.value);
+    handleIpChange(inputRef.current.value);
   };
   const inputRef = useRef(null);
   return (
@@ -12,7 +12,7 @@ export const Header = ({ setIpAddress }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          pattern="^(([0-9a-fA-F]{1}|[1-9a-fA-F]{1}[0-9a-fA-F]{1,3}):){7}([0-9a-fA-F]{1}|[1-9a-fA-F]{1}[0-9a-fA-F]{1,3})$"
+          // pattern="^(([0-9a-fA-F]{1}|[1-9a-fA-F]{1}[0-9a-fA-F]{1,3}):){7}([0-9a-fA-F]{1}|[1-9a-fA-F]{1}[0-9a-fA-F]{1,3})$"
           ref={inputRef}
           required
         />
