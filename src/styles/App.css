@@ -6,6 +6,7 @@
 */
 :root {
   font-family: "Rubik", sans-serif;
+  color: hsl(0, 0%, 20%);
 }
 
 /*
@@ -19,8 +20,10 @@ h1 {
   font-weight: 500;
 }
 
-.result-header {
+span {
   font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+  color: hsl(0, 0%, 59%);
 }
 
 @media (min-width: 1200px) {
@@ -73,10 +76,13 @@ h1 {
   =============
 */
 button {
-  background-color: hsl(0, 0%, 17%);
+  background-color: hsl(0, 0%, 20%);
   border: none;
   border-radius: 0px 0.5rem 0.5rem 0px;
   padding: 1.5rem;
+}
+button:hover {
+  cursor: pointer;
 }
 
 input {
@@ -123,7 +129,7 @@ input:focus {
   }
   .result {
     max-width: 240px;
-    border-right: 1px solid hsl(0, 0%, 59%);
+    border-right: 1px solid hsl(0, 0%, 90%);
     padding: 0px 2.5rem;
   }
   .result:last-child {

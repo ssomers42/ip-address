@@ -1,6 +1,7 @@
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, ZoomControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useMap } from 'react-leaflet/hooks';
+import locationMarker from '../assets/icon-location.svg';
 
 export const Map = ({ ipData }) => {
   const lat = ipData ? ipData.location.lat : 34;
@@ -8,13 +9,16 @@ export const Map = ({ ipData }) => {
 
   //Updates MapContainer when ipAddress is updated
   const FlyMapOnIpUpdate = ({ center, zoom }) => {
-    const map = useMap();
     //MapContainer props are immutable. Use useMap hook to flyTo when the ipAddress changes
-    map.flyTo(center, zoom);
+    const map = useMap();
+    if (ipData) {
+      map.flyTo(center, zoom);
+    }
   };
 
-  window.addEventListener('resize', (e) => {
-    console.log('resized');
+  const markerIcon = L.icon({
+    iconUrl: locationMarker,
+    iconSize: [34.5, 42],
   });
 
   return (
@@ -23,16 +27,19 @@ export const Map = ({ ipData }) => {
         center={[lat, long]}
         zoom={3}
         scrollWheelZoom={true}
-        style={{ height: '70vh' }}>
+        style={{ height: '70vh' }}
+        zoomControl={false}>
         <TileLayer
           attribution={
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           }
           url={`https://tile.openstreetmap.org/{z}/{x}/{y}.png`}
         />
-        <Marker position={[lat, long]} />
+        {ipData && <Marker position={[lat, long]} icon={markerIcon} />}
         <div id="map"></div>
         <FlyMapOnIpUpdate center={[lat, long]} zoom={15} />
+        {/* If on mobile, remove zoom controls. Can't adjust this on resize because mapcontainer does not repaint*/}
+        {window.innerWidth > 1200 ? <ZoomControl position="topleft" /> : null}
       </MapContainer>
     </div>
   );

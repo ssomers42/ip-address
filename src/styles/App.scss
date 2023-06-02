@@ -7,13 +7,15 @@
 */
 
 $black: #000;
-$very-dark-gray: hsl(0, 0%, 17%);
+$very-dark-gray: hsl(0, 0%, 20%);
 $dark-gray: hsl(0, 0%, 59%);
+$light-gray: hsl(0, 0%, 90%);
 $white: #fff;
 $radix: 0.5rem;
 
 :root {
   font-family: 'Rubik', sans-serif;
+  color: $very-dark-gray;
 }
 
 /*
@@ -28,8 +30,10 @@ h1 {
   font-weight: 500;
 }
 
-.result-header {
+span {
   font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+  color: $dark-gray;
 }
 
 @media (min-width: 1200px) {
@@ -96,6 +100,10 @@ button {
   border: none;
   border-radius: 0px $radix $radix 0px;
   padding: 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 input {
@@ -147,7 +155,7 @@ input {
 
   .result {
     max-width: 240px;
-    border-right: 1px solid $dark-gray;
+    border-right: 1px solid $light-gray;
     padding: 0px 2.5rem;
 
     &:last-child {
