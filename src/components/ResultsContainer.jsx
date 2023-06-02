@@ -1,15 +1,15 @@
 import { Result } from './Result';
 
-export const ResultsContainer = ({ ipAddress, ipInfo }) => {
+export const ResultsContainer = ({ ipData }) => {
   return (
-    <div>
-      <Result header={'IP ADDRESS'} details={ipAddress} />
+    <div id="results-container">
+      <Result header={'IP ADDRESS'} details={ipData.ip} />
       <Result
         header={'LOCATION'}
-        details={`${ipInfo.location.city}, ${ipInfo.location.region}, ${ipInfo.location.postalCode}`}
+        details={`${ipData.location.city}, ${ipData.location.region} ${ipData.location.postalCode}`}
       />
-      <Result header={'TIME ZONE'} details={ipInfo.location.timezone} />
-      <Result header={'ISP'} details={ipInfo.isp} />
+      <Result header={'TIME ZONE'} details={ipData.location.timezone} />
+      <Result header={'ISP'} details={ipData.isp} />
     </div>
   );
 };
