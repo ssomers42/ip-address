@@ -43,7 +43,7 @@ span {
   background-size: cover;
   position: relative;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   flex-direction: column;
   gap: 1.5rem;
   height: 40dvh;
@@ -81,7 +81,6 @@ span {
     background: url(../assets/pattern-bg-desktop.png);
     height: 30dvh;
     align-items: center;
-    justify-content: start;
     gap: 0;
   }
   #header #form-container {

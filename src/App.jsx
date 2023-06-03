@@ -11,7 +11,6 @@ function App() {
       <Header
         handleIpChange={(ipData) => setIpData(ipData)}
         ipData={ipData}></Header>
-      {/* {ipData && <ResultsContainer ipData={ipData}></ResultsContainer>} */}
       <Map ipData={ipData}></Map>
     </>
   );

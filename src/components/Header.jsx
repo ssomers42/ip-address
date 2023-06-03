@@ -15,8 +15,10 @@ export const Header = ({ handleIpChange, ipData }) => {
 
   const inputRef = useRef(null);
 
+  const moveDiv = ipData ? { justifyContent: 'start' } : {};
+
   return (
-    <div id="header">
+    <div id="header" style={moveDiv}>
       <div id="form-container">
         <h1>IP Address Tracker</h1>
         <form onSubmit={handleSubmit}>
