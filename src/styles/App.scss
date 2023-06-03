@@ -51,7 +51,7 @@ span {
 */
 
 #header {
-  background: url(../assets/pattern-bg-mobile.png);
+  background: url('../assets/pattern-bg-mobile.png');
   background-size: cover;
 
   position: relative;
@@ -99,7 +99,8 @@ span {
 
 @media (min-width: 1200px) {
   #header {
-    background: url(../assets/pattern-bg-desktop.png);
+    background: url('../assets/pattern-bg-desktop.png');
+    background-size: cover;
     height: 30dvh;
     align-items: center;
     gap: 0;

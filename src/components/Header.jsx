@@ -7,6 +7,7 @@ export const Header = ({ handleIpChange, ipData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const ipData = await getIpData(inputRef.current.value);
+    inputRef.current.value = '';
     console.log(ipData);
     if (!ipData.code) {
       handleIpChange(ipData);
