@@ -39,14 +39,17 @@ span {
   =============
 */
 #header {
-  background: url(../assets/pattern-bg-desktop.png);
+  background: url(../assets/pattern-bg-mobile.png);
   background-size: cover;
+  position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  flex-direction: column;
+  gap: 1.5rem;
   height: 40dvh;
   padding: 1rem;
 }
-#header div {
+#header #form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,20 +57,56 @@ span {
   width: 100%;
   transition: all 350ms ease-out;
 }
-#header div form {
+#header #form-container form {
   width: 100%;
   display: flex;
   justify-content: center;
 }
+#header #results-container {
+  z-index: 1;
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-columns: 1fr;
+  align-self: center;
+  gap: 1rem;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0px 8px 24px rgba(102, 102, 102, 0.12);
+  padding: 1rem;
+}
 
 @media (min-width: 1200px) {
   #header {
+    background: url(../assets/pattern-bg-desktop.png);
     height: 30dvh;
     align-items: center;
+    justify-content: start;
+    gap: 0;
   }
-  #header div {
+  #header #form-container {
     align-items: center;
-    gap: 2.5rem;
+    justify-content: center;
+    min-height: 25dvh;
+  }
+  #header #results-container {
+    grid-auto-flow: column;
+    width: -moz-max-content;
+    width: max-content;
+    padding: 2rem;
+  }
+  #header .result {
+    max-width: 240px;
+    border-right: 1px solid hsl(0, 0%, 90%);
+    padding: 0px 2.5rem;
+  }
+  #header .result:last-child {
+    border: 0px;
+  }
+}
+@media (max-width: 1200px) {
+  .result {
+    text-align: center;
   }
 }
 /*
@@ -78,7 +117,7 @@ span {
 button {
   background-color: hsl(0, 0%, 20%);
   border: none;
-  border-radius: 0px 0.5rem 0.5rem 0px;
+  border-radius: 0px 1rem 1rem 0px;
   padding: 1.5rem;
 }
 button:hover {
@@ -89,7 +128,7 @@ input {
   font-size: 1rem;
   font-weight: 400;
   padding: 1.5rem;
-  border-radius: 0.5rem 0px 0px 0.5rem;
+  border-radius: 1rem 0px 0px 1rem;
   border: none;
   width: 100%;
   max-width: 75ch;
@@ -103,44 +142,6 @@ input:focus {
   position: relative;
 }
 
-#results-container {
-  position: absolute;
-  top: 40dvh;
-  left: 50%;
-  translate: -50% -50%;
-  z-index: 1;
-  display: grid;
-  grid-auto-flow: row;
-  grid-auto-columns: 1fr;
-  gap: 1rem;
-  width: -moz-max-content;
-  width: max-content;
-  max-width: calc(100% - 2rem);
-  background-color: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0px 8px 24px rgba(102, 102, 102, 0.12);
-  padding: 1.5rem;
-}
-
-@media (min-width: 1200px) {
-  #results-container {
-    top: 30dvh;
-    grid-auto-flow: column;
-  }
-  .result {
-    max-width: 240px;
-    border-right: 1px solid hsl(0, 0%, 90%);
-    padding: 0px 2.5rem;
-  }
-  .result:last-child {
-    border: 0px;
-  }
-}
-@media (max-width: 1200px) {
-  .result {
-    text-align: center;
-  }
-}
 /*
   =============
     Animation

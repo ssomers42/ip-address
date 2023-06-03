@@ -6,7 +6,7 @@ export const ResultsContainer = ({ ipData }) => {
       <Result header={'IP ADDRESS'} details={ipData.ip} />
       <Result
         header={'LOCATION'}
-        details={`${ipData.location.city}, ${ipData.location.region} ${ipData.location.postalCode}`}
+        details={`${ipData.location.city}, ${ipData.location.region}`}
       />
       <Result header={'TIME ZONE'} details={ipData.location.timezone} />
       <Result header={'ISP'} details={ipData.isp} />

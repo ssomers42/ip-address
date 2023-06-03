@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import icon from '../assets/icon-arrow.svg';
 import { getIpData } from '../helpers/getIpData';
+import { ResultsContainer } from './ResultsContainer';
 
 export const Header = ({ handleIpChange, ipData }) => {
   const handleSubmit = async (e) => {
@@ -16,7 +17,7 @@ export const Header = ({ handleIpChange, ipData }) => {
 
   return (
     <div id="header">
-      <div className={ipData ? 'slideup' : ''}>
+      <div id="form-container">
         <h1>IP Address Tracker</h1>
         <form onSubmit={handleSubmit}>
           <input
@@ -31,6 +32,7 @@ export const Header = ({ handleIpChange, ipData }) => {
           </button>
         </form>
       </div>
+      <ResultsContainer ipData={ipData} />
     </div>
   );
 };
