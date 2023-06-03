@@ -32,7 +32,7 @@ export const Header = ({ handleIpChange, ipData }) => {
           </button>
         </form>
       </div>
-      <ResultsContainer ipData={ipData} />
+      {ipData && <ResultsContainer ipData={ipData} />}
     </div>
   );
 };
