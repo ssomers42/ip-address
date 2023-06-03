@@ -100,7 +100,9 @@ h3 {
     padding: 2rem;
   }
   #header .result {
+    width: 100%;
     max-width: 240px;
+    overflow: hidden;
     border-right: 1px solid hsl(0, 0%, 90%);
     padding: 0px 2.5rem;
   }

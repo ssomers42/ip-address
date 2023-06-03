@@ -122,7 +122,9 @@ h3 {
     }
 
     .result {
+      width: 100%;
       max-width: 240px;
+      overflow: hidden;
       border-right: 1px solid $light-gray;
       padding: 0px 2.5rem;
 
