@@ -33,6 +33,10 @@ span {
     font-weight: 500;
   }
 }
+h3 {
+  overflow-wrap: break-word;
+}
+
 /*
   =============
       Layout
