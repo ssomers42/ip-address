@@ -29,3 +29,6 @@ styles.css.map
 /design
 style-guide.md
 details.md
+
+# Local Netlify folder
+.netlify
