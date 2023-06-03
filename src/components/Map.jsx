@@ -27,7 +27,9 @@ export const Map = ({ ipData }) => {
         center={[lat, long]}
         zoom={3}
         scrollWheelZoom={true}
-        style={{ height: '70vh' }}
+        style={
+          window.innerWidth > 1200 ? { height: '70vh' } : { height: '60vh' }
+        }
         zoomControl={false}>
         <TileLayer
           attribution={
