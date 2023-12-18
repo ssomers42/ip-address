@@ -24,7 +24,7 @@ export const Header = ({ handleIpChange, ipData }) => {
         <h1>IP Address Tracker</h1>
         <form onSubmit={handleSubmit}>
           <input
-            placeholder="Search for any IP address or domain"
+            placeholder="Search for any IPv4 address"
             type="text"
             // pattern="^(([0-9a-fA-F]{1}|[1-9a-fA-F]{1}[0-9a-fA-F]{1,3}):){7}([0-9a-fA-F]{1}|[1-9a-fA-F]{1}[0-9a-fA-F]{1,3})$"
             ref={inputRef}
